@@ -1,0 +1,35 @@
+-----Aksoyhlc Domain Takip Scripti Kurulum Ýþlemi-----
+
+1. Yeni bir tane veritabaný oluþturun ve zip dosyasý içerisinde ki SQL dosyasýný içe aktarýn.
+2. Ýlk oturum için 
+Mail adresi: aksoyhlc@gmail.com
+Þifre: 123
+bu hesapla oturum açtýktan sonra sol menüde ki profil bölümünden e-posta ve þifrenizi deðiþtirebilirsiniz.
+3. Hatýrlatýcý ile ilgili bilgiler:
+Mail, domain bitiþ tarihine 1-2-3-4-5-6-7-15-30 gün kala gönderilir.
+SMS, 1-7-15 gün kala sadece müþterinize gönderilir. Eðer müþterinize deðilde size gönderilmeisni istiyorsanýz kontrol.php dosyasýnýn 127. satýrýnda ki açýklamayý okuyun.
+4. SMS göndermek için www.iletimerkezi.com sitesinden SMS satýn almanýz gerekiyor. SMS satýn aldýktan sonra ayarlar sayfasýndan iletimerkezi telefon numarasý ve þifrenizi girmeniz gerekiyor daha sonra kontrol.php dosyasýnýn 33. satýrýnda ki origin name (SMS baþlýðý) kýsmýný (AKSOYHLC yazýyor) kendi origin nameniz ile deðiþtirin
+
+5. Hatýrlarýcý ayarlarý için bir tane cronjob oluþturmanýz gerekiyor. 
+
+Cronjob: 
+===============
+Zamanlanmýþ dosyalarýn sunucu üzerinde çalýþtýrýlmasýdýr. Web siteniz üzerinde belirli aralýklarla çalýþtýrmak istediðiniz dosyalar varsa sunucu üzerinde cron tanýmlayýp istediðiniz gün, saat ve dakikalarda çalýþmasýný saðlayabilirsiniz.
+
+Cpanel kullananlar eklemek için þu linke bakabilir https://blog.veridyen.com/cronjob-nedir-cpanelde-cronjob-ekleme/
+
+Cpanel dýþýnda ücretsiz harici cronjoblar da kullanabilirsiniz bunlardan iki tanesi þunlardýr:
+
+https://cron-job.org/en/
+https://www.easycron.com/
+
+Cronjobu 24 saatte bir çalýþacak þekilde ayarlamanýz gerekiyor.  
+
+Herhangi bir sorunda; 
+Skype: Aksoyhlc (önerilen)
+Mail: aksoyhlc@gmail.com | 27aksoy27@gmail.com | admin@aksoyhlc.net
+Link: https://www.aksoyhlc.net/iletisim
+
+adreslerinden herhangi biri ile iletiþime geçebilirsiniz.
+
+-----Aksoyhlc Domain Takip Scripti Kurulum Ýþlemi-----
