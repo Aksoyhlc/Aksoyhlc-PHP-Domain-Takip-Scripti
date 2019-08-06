@@ -8,10 +8,10 @@ $domaincek=$domainsor->fetch(PDO::FETCH_ASSOC);
 <div class="container">
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h5 class="m-0 font-weight-bold text-primary">Domain Ekle</h5>
+      <h5 class="m-0 font-weight-bold text-primary">Domain Yenile</h5>
     </div>
     <div class="card-body">
-      <form action="islemler/islem.php" method="POST" enctype="multipart/form-data">
+      <form action="islemler/islem.php" method="POST">
         <div class="form-row">
           <div class="form-group col-md-4">
             <label>Domain Adı</label>
