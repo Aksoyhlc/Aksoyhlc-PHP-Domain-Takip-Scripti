@@ -45,10 +45,9 @@ Sahibi olduğunuz ve aşağıda belirtilen alan adının kullanımının kesinti
 
 
 
-<span style="box-sizing: border-box; color: rgb(108, 117, 125) !important; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 13.6px;">Cemre Medya<br>
-0342 232 00 58<br>
-+90 532 224 89 28<br>
-<a href="http://www.cemremedia.com">www.cemremedia.com</a>
+<span style="box-sizing: border-box; color: rgb(108, 117, 125) !important; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 13.6px;"><br>
+Ökkeş Aksoy | Aksoyhlc<br>
+<a href="https://www.aksoyhlc.net">www.aksoyhlc.net</a>
 </span><br><hr>
 	<span style="box-sizing: border-box; color: rgb(108, 117, 125) !important; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 13.6px; font-weight: bolder;">Aksoyhlc Domain Takip Sistemi Tarafından Gönderilmiştir Lütfen Cevaplamayın</span>
 </center>
