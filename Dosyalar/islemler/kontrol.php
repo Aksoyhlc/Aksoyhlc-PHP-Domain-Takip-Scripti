@@ -33,12 +33,6 @@ $password   = $ayarcek['sms_sifre'];
 $orgin_name = 'AKSOYHLC';
 
 
-/*
-	Bu Script Aksoyhlc Tarafından Hazırlanmıştır "Ökkeş AKsoy | Aksoyhlc" 
-	Ticari amaçla KULLANILAMAZ
-	Satışı YAPILAMAZ
-	Paylaşırken KAYNAK BELİRTMENİZ GEREKİYOR
-	*/
 
 $host_adresi=$ayarcek['host_adresi'];
 $port_numarasi=$ayarcek['port_numarasi'];
@@ -47,26 +41,61 @@ $mail_sifreniz=$ayarcek['mail_sifre'];
 
 $http="http://";
 
-require 'phpmail/Exception.php';
-require 'phpmail/PHPMailer.php';
-require 'phpmail/SMTP.php';
 
+/*
+	Bu Script Aksoyhlc Tarafından Hazırlanmıştır "Ökkeş AKsoy | Aksoyhlc" 
+	Ticari amaçla KULLANILAMAZ
+	Satışı YAPILAMAZ
+	Paylaşırken KAYNAK BELİRTMENİZ GEREKİYOR
+	*/
 $mailbasligi="Hatırlatma Maili";
 $isim=$ayarcek['site_baslik'];
 
-$mail = new PHPMailer\PHPMailer\PHPMailer(); 
-$mail->IsSMTP(); 
-$mail->SMTPAuth = true;
-$mail->SMTPSecure = 'ssl'; 
-$mail->Host = $host_adresi;
-$mail->Port = $port_numarasi; 
-$mail->IsHTML(true);
-$mail->Username = $mail_adresiniz;
-$mail->Password = $mail_sifreniz; 
-$mail->SetFrom($mail->Username, $isim);	
-$mail->Subject = $mailbasligi;
-$mail->CharSet = 'UTF-8';
+function mailgonder($veri)
+{
 
+	global $ayarcek;
+
+	$host_adresi=$ayarcek['host_adresi'];
+	$port_numarasi=$ayarcek['port_numarasi'];
+	$mail_adresiniz=$ayarcek['mail_adresi'];
+	$mail_sifreniz=$ayarcek['mail_sifre'];
+
+	$_POST=$veri;
+
+	$mailbasligi=$_POST['mail_baslik'];
+	$isim=$_POST['mail_isim']; 
+	$mailadresi=$_POST['mail_adres'];
+	$mailicerigi=$_POST['mail_detay'];
+
+
+	require_once 'phpmail/Exception.php';
+	require_once 'phpmail/PHPMailer.php';
+	require_once 'phpmail/SMTP.php';
+
+	$mail = new PHPMailer\PHPMailer\PHPMailer(); 
+	$mail->IsSMTP();					
+	$mail->SMTPAuth = true;
+	$mail->SMTPSecure = 'ssl'; 
+	$mail->Host = $host_adresi;
+	$mail->Port = $port_numarasi; 
+	$mail->IsHTML(true);
+	$mail->Username = $mail_adresiniz;
+	$mail->Password = $mail_sifreniz; 
+	$mail->SetFrom($mail->Username, $isim);	
+	$mail->Subject = $mailbasligi;
+	$mail->Body = $mailicerigi;		
+	$mail->CharSet = 'UTF-8';
+	$mail->AddAddress($mailadresi);			
+
+	if($mail->Send()) {
+		return TRUE;
+	} else {	
+		echo "<hr>".'Gönderme Hatası: ' . $mail->ErrorInfo;			
+		return FALSE;
+	}
+
+}
 
 /*************************/
 
@@ -74,6 +103,12 @@ $mail->CharSet = 'UTF-8';
 $domainsor=$db->prepare("SELECT * FROM domain");
 $domainsor->execute();
 
+/*
+	Bu Script Aksoyhlc Tarafından Hazırlanmıştır "Ökkeş AKsoy | Aksoyhlc" 
+	Ticari amaçla KULLANILAMAZ
+	Satışı YAPILAMAZ
+	Paylaşırken KAYNAK BELİRTMENİZ GEREKİYOR
+	*/
 while ($domaincek=$domainsor->fetch(PDO::FETCH_ASSOC)) {
 
 	if (strstr($domaincek['domain_bitis'], "0000")==false) {
@@ -89,12 +124,7 @@ while ($domaincek=$domainsor->fetch(PDO::FETCH_ASSOC)) {
 			$bitis_tarihi=$domaincek['domain_bitis'];
 			$kalangun=$sonuc;
 			include 'mailtema.php';
-			/*
-	Bu Script Aksoyhlc Tarafından Hazırlanmıştır "Ökkeş AKsoy | Aksoyhlc" 
-	Ticari amaçla KULLANILAMAZ
-	Satışı YAPILAMAZ
-	Paylaşırken KAYNAK BELİRTMENİZ GEREKİYOR
-	*/
+
 			$musterisor=$db->prepare("SELECT * FROM musteri WHERE musteri_id=:musteri_id");
 			$musterisor->execute(array(
 				'musteri_id' => $domaincek['domain_musteri']
@@ -105,21 +135,32 @@ while ($domaincek=$domainsor->fetch(PDO::FETCH_ASSOC)) {
 			$musteritelefon=$mustericek['musteri_telefon'];
 
 			$mailler = array('0' => $musterimail, '1' => $ayarcek['site_mail']);
+
+			$liste=array(
+				'mail_baslik' => "Hatırlatma Maili",
+				'mail_isim' => $ayarcek['site_baslik'],
+				'mail_adres' => $musterimail,
+				'mail_detay' => $mailicerigi
+			);
+
+			mailgonder($liste);
 			
-			$mail->Body = $mailicerigi;
+			
+/*
+	Bu Script Aksoyhlc Tarafından Hazırlanmıştır "Ökkeş AKsoy | Aksoyhlc" 
+	Ticari amaçla KULLANILAMAZ
+	Satışı YAPILAMAZ
+	Paylaşırken KAYNAK BELİRTMENİZ GEREKİYOR
+	*/
 
+			$liste2=array(
+				'mail_baslik' => "Hatırlatma Maili",
+				'mail_isim' => $ayarcek['site_baslik'],
+				'mail_adres' => $ayarcek['site_mail'],
+				'mail_detay' => $mailicerigi
+			);
 
-			/*Domain bitme tarihi yaklaşınca size mail gelmesini istemiyorsanız aşağıda ki satırı silin*/
-			$mail->AddAddress($ayarcek['site_mail']);
-
-			/*Domain bitme tarihi yaklaşınca müşterinize mail gitmesini istemiyorsanız aşağıda ki satırı silin*/
-			$mail->AddAddress($musterimail);	
-
-			if(!$mail->send()) {
-				echo "<hr>".'Gönderme Hatası: ' . $mail->ErrorInfo;
-			} else {
-				echo "<hr>".'Mail Gönderildi';
-			}
+			mailgonder($liste2);
 
 
 			/*Domain bitme tarihi yaklaşınca müşterinize SMS gitmesini istemiyorsanız aşağıdaki satırları silin*/
@@ -128,10 +169,10 @@ while ($domaincek=$domainsor->fetch(PDO::FETCH_ASSOC)) {
 				$numara = $musteritelefon;
 				$numaralar="";
 				$numaralar="<number>{$numara}</number>";
-				$mesaj = $domaincek['domain_adi']." domain/hosting kullanım süresi ".$kalangun." gün içerisinde dolacaktır yenilemeyi unutmayın";
+				$mesaj = $domaincek['domain_adi']." domain kullanım süresi ".$kalangun." gün içerisinde dolacaktır yenilemeyi unutmayın";
 
 
-			$xml = <<<EOS
+				$xml = <<<EOS
 <request>
 <authentication>
 <username>{$username}</username>
@@ -151,14 +192,22 @@ while ($domaincek=$domainsor->fetch(PDO::FETCH_ASSOC)) {
 </request>
 EOS;
 
-$result = sendRequest('http://api.iletimerkezi.com/v1/send-sms',$xml,array('Content-Type: text/xml'));
-print_r($result);
+				$result = sendRequest('http://api.iletimerkezi.com/v1/send-sms',$xml,array('Content-Type: text/xml'));
+				print_r($result);
 
 			}
-			/*Domain bitme tarihi yaklaşınca müşterinize SMS gitmesini istemiyorsanız yukarıdaki satırları silin*/
 			
+/*
+	Bu Script Aksoyhlc Tarafından Hazırlanmıştır "Ökkeş AKsoy | Aksoyhlc" 
+	Ticari amaçla KULLANILAMAZ
+	Satışı YAPILAMAZ
+	Paylaşırken KAYNAK BELİRTMENİZ GEREKİYOR
+	*/
+			/*Domain bitme tarihi yaklaşınca müşterinize SMS gitmesini istemiyorsanız yukarıdaki satırları silin*/
+
 		}
 	}
 }
+
 
 ?>
