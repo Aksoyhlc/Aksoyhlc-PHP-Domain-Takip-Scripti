@@ -24,6 +24,7 @@ https://cron-job.org/en/
 https://www.easycron.com/
 
 Cronjobu 24 saatte bir çalışacak şekilde ayarlamanız gerekiyor.  
+Çalıştırılacak dosya: islemler klasörünün içerisindeki kontrol.php dosyasıdır.
 
 Herhangi bir sorunda; 
 Skype: Aksoyhlc (önerilen)
